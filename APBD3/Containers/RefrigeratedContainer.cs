@@ -12,7 +12,7 @@ public class RefrigeratedContainer : Container
         SelfWeight = selfWeight;
         Depth = depth;
         MaxLoadCapacity = maxLoadCapacity;
-        SerialNumber = SerialNumberGenerator.GenerateSerialNumber("L");
+        SerialNumber = SerialNumberGenerator.GenerateSerialNumber("R");
         ProductType = productType;
         Temperature = temperature;
     }

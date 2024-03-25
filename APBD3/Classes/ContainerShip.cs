@@ -9,6 +9,14 @@ public class ContainerShip
     public int MaxContainerCount { get; set; }
     public int MaxContainerWeight { get; set; }
 
+    public ContainerShip(double maxSpeed, int maxContainerCount, int maxContainerWeight)
+    {
+        Containers = new List<Container>();
+        MaxSpeed = maxSpeed;
+        MaxContainerCount = maxContainerCount;
+        MaxContainerWeight = maxContainerWeight;
+    }
+
     public void LoadContainer(Container container)
     {
         // Implementacja metody LoadContainer
