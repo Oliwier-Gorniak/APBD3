@@ -4,8 +4,8 @@ namespace APBD3.Containers;
 
 public class RefrigeratedContainer : Container
 {
-    public string ProductType { get; set; }
-    public double Temperature { get; set; }
+    private string ProductType { get; set; }
+    private double Temperature { get; set; }
 
     public RefrigeratedContainer(double loadMass, double height, double selfWeight, double depth, double maxLoadCapacity, string productType, double temperature) : base(loadMass, height, selfWeight, depth, maxLoadCapacity)
     {
@@ -31,5 +31,10 @@ public class RefrigeratedContainer : Container
     public override void Unload()
     {
         LoadMass = 0;
+    }
+    
+    public override string ToString()
+    {
+        return $"Container: Serial Number = {SerialNumber}, Load Mass = {LoadMass}, Height = {Height}, Self Weight = {SelfWeight}, Depth = {Depth}, Max Load Capacity = {MaxLoadCapacity}, Product Type = {ProductType}, Temperature = {Temperature}";
     }
 }

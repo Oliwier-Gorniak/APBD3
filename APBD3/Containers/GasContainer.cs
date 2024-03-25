@@ -5,9 +5,9 @@ namespace APBD3.Containers;
 
 public class GasContainer : Container, IHazardNotifier
 {
-    public double Pressure { get; set; }
-    public bool IsHazardous { get; set; }
-    public double HazardousLoad { get; set; }
+    private double Pressure { get; set; }
+    private bool IsHazardous { get; set; }
+    private double HazardousLoad { get; set; }
 
     public GasContainer(double loadMass, double height, double selfWeight, double depth, double maxLoadCapacity, double pressure, bool isHazardous, double hazardousLoad) : base(loadMass, height, selfWeight, depth, maxLoadCapacity)
     {
@@ -39,5 +39,11 @@ public class GasContainer : Container, IHazardNotifier
     public void NotifyHazard(string message)
     {
         Console.WriteLine(message);
+    }
+    
+    public override string ToString()
+    {
+        return
+            $"Container: Serial Number = {SerialNumber}, Load Mass = {LoadMass}, Height = {Height}, Self Weight = {SelfWeight}, Depth = {Depth}, Max Load Capacity = {MaxLoadCapacity}, Pressure = {Pressure}, Is Hazardous = {IsHazardous}, Hazardous Load = {HazardousLoad}";
     }
 }
