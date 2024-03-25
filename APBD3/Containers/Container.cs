@@ -9,6 +9,15 @@ public abstract class Container
     public string SerialNumber { get; set; }
     public double MaxLoadCapacity { get; set; }
 
+    protected Container(double loadMass, double height, double selfWeight, double depth, double maxLoadCapacity)
+    {
+        LoadMass = loadMass;
+        Height = height;
+        SelfWeight = selfWeight;
+        Depth = depth;
+        MaxLoadCapacity = maxLoadCapacity;
+    }
+
     public abstract void Load(double mass);
     public abstract void Unload();
 }

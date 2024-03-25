@@ -1,3 +1,5 @@
+using APBD3.Exceptions;
+
 namespace APBD3.Containers;
 
 public class RefrigeratedContainer : Container
@@ -5,25 +7,29 @@ public class RefrigeratedContainer : Container
     public string ProductType { get; set; }
     public double Temperature { get; set; }
 
-    public RefrigeratedContainer(double loadMass, double height, double selfWeight, double depth, double maxLoadCapacity, string productType, double temperature)
+    public RefrigeratedContainer(double loadMass, double height, double selfWeight, double depth, double maxLoadCapacity, string productType, double temperature) : base(loadMass, height, selfWeight, depth, maxLoadCapacity)
     {
-        LoadMass = loadMass;
-        Height = height;
-        SelfWeight = selfWeight;
-        Depth = depth;
-        MaxLoadCapacity = maxLoadCapacity;
-        SerialNumber = SerialNumberGenerator.GenerateSerialNumber("R");
+        if (loadMass > maxLoadCapacity)
+        {
+            throw new OverfillException("Load too high for provided max load capacity.");
+        }
+        SerialNumber = SerialNumberGenerator.GenerateSerialNumber("C");
         ProductType = productType;
         Temperature = temperature;
     }
 
     public override void Load(double mass)
     {
-        // Implementacja metody Load
+        if (LoadMass + mass > MaxLoadCapacity)
+        {
+            throw new OverfillException("The container is overfilled.");
+        }
+        
+        LoadMass += mass;
     }
 
     public override void Unload()
     {
-        // Implementacja metody Unload
+        LoadMass = 0;
     }
 }
